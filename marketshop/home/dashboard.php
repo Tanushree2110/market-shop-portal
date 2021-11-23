@@ -71,10 +71,6 @@ $query = mysqli_query($con, $q);
             z-index: 500;
 
         }
-        .row
-        {
-            display:contents;
-        }
     </style>
 
 </head>
@@ -97,34 +93,36 @@ $query = mysqli_query($con, $q);
             <input type="text" id="myFilter" class="form-control" onkeyup="myFunction()" placeholder="Search Shops">
         </div>
         <br>
+    </div>
 
-        <!-- top -->
-        <div class="row">
+    <!-- top -->
+    <div style="margin:30px;">
+    <div class="card-columns" >
 
-            <!-- shop Cards -->
-            <div id="shops" class="row mt-5">
-                <?php
-                $query = mysqli_query($con, "SELECT * FROM shop ORDER BY shopName");
-                while ($qq = mysqli_fetch_array($query)) {
-                ?>
-                    <div class="col-lg-5">
-                        <div class="card text-center">
-                            <div id="myUL" class="card-header" style="background-color:#24a0ed;">
-                                <div class="card-title" style="color:white; font-size:22px; text-shadow:none; font-weight:bold;font-family:sans;"><?php echo htmlentities($qq['shopName']); ?></div>
-                            </div>
-                            <div class="card-body" style="background-color:azure;">
-                                <p class="card-text" style="font-size:20px"><?php echo $qq['location'] ?></p>
-                                <a href="feedback.php?shopID=<?php echo $qq['shopID']; ?>" target="_blank" class="btn btn-primary" style="height:40px;">Feedback</a>
-                            </div>
-                            <div class="card-footer text-muted" style="font-size:15px; font-weight:bold;"> <i class="fa fa-phone"></i> <?php echo $qq['contact'] ?> </div>
-                        </div>
+        <!-- shop Cards -->
+        <div id="shops">
+            <?php
+            $query = mysqli_query($con, "SELECT * FROM shop ORDER BY shopName");
+            while ($qq = mysqli_fetch_array($query)) {
+            ?>
+
+                <div class="card text-center">
+                    <div id="myUL" class="card-header" style="background-color:#24a0ed;">
+                        <div class="card-title" style="color:white; font-size:22px; text-shadow:none; font-weight:bold;font-family:sans;"><?php echo htmlentities($qq['shopName']); ?></div>
                     </div>
-                <?php
-                }
-                ?>
-            </div>
+                    <div class="card-body" style="background-color:azure;">
+                        <p class="card-text" style="font-size:20px"><?php echo $qq['location'] ?></p>
+                        <a href="feedback.php?shopID=<?php echo $qq['shopID']; ?>" target="_blank" class="btn btn-primary" style="height:40px;">Feedback</a>
+                    </div>
+                    <div class="card-footer text-muted" style="font-size:15px; font-weight:bold;"> <i class="fa fa-phone"></i> <?php echo $qq['contact'] ?> </div>
+                </div>
+
+            <?php
+            }
+            ?>
         </div>
     </div>
+        </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
     <script>
         function myFunction() {

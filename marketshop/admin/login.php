@@ -55,13 +55,13 @@ if (isset($_POST['submit'])) {
 					<form method="post" action="login.php" enctype="multipart/form-data">
 						<h3 style="font-family: serif; color:grey; text-align:center;">Login</h3>
 						<div class="form-group">
-							<h5 style="font-family: serif;  font-size: 16px;"><label class="form-label">Email Id</label></h5>
+							<h5 style="font-family: serif;  font-size: 16px;"><label class="form-label">Email Id<span class="error" style="color:red;">*</span></label></h5>
 							<div class="form-outline mb-4">
 								<input type="email" name="email" placeholder="example@gmail.com" class="form-control form-control-lg">
 							</div>
 						</div>
 						<div class="form-group">
-							<h5 style="font-family: serif;  font-size: 16px;"><label class="form-label">Password:
+							<h5 style="font-family: serif;  font-size: 16px;"><label class="form-label">Password<span class="error" style="color:red;">*</span>
 								</label></h5>
 							<input type="password" name="password" placeholder="Password" class="form-control form-control-lg">
 						</div>

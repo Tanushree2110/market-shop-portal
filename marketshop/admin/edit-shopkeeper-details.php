@@ -67,26 +67,26 @@ if (strlen($_SESSION['email']) == 0) {
                                         $row = mysqli_fetch_array($query);
                                         ?>
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Name</label>
+                                            <label class="control-label" for="basicinput">Name<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <input type="text" class="span8 tip" name="name" value="<?php echo  htmlentities($row['name']); ?>" style="color:dimgray;" required>
                                             </div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Address</label>
+                                            <label class="control-label" for="basicinput">Address<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <input type="text" class="span8 tip" name="address" value="<?php echo  htmlentities($row['address']); ?>" style="color:dimgray;" required>
                                             </div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Security pass validity
+                                            <label class="control-label" for="basicinput">Security pass validity<span class="error" style="color:red;">*</span>
                                             </label>
                                             <div class="controls">
                                                 <input placeholder="Security pass validity" name="secPassVal" value="<?php echo  htmlentities($row['secPassVal']); ?>" class="span8 tip" type="text" onfocus="(this.type='date')" id="date" style="color:dimgray;" required>
                                             </div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Contact Number
+                                            <label class="control-label" for="basicinput">Contact Number<span class="error" style="color:red;">*</span>
                                             </label>
                                             <div class="controls">
                                                 <input type="number" placeholder="Contact Number" name="contact" value="<?php echo  htmlentities($row['contact']); ?>" class="span8 tip" style="color:dimgray;" required>

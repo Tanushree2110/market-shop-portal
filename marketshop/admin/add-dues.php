@@ -104,7 +104,7 @@ if (strlen($_SESSION['email']) == 0) {
                                     <form class="form-horizontal row-fluid" name="insertproduct" method="post" enctype="multipart/form-data" id="frm">
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Shop Name</label>
+                                            <label class="control-label" for="basicinput">Shop Name<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <select onchange="changeMe(this)" name="shopName" class="span8 tip" id="shopName" required>
                                                     <option hidden value=""> Select Shop</option>
@@ -118,7 +118,7 @@ if (strlen($_SESSION['email']) == 0) {
 
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Due Type</label>
+                                            <label class="control-label" for="basicinput">Due Type<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <select onchange="changeMe(this)" name="dueType" id="dueType" class="span8 tip" required>
                                                     <option hidden value="">Select Due Type</option>
@@ -134,14 +134,14 @@ if (strlen($_SESSION['email']) == 0) {
 
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Due Amount</label>
+                                            <label class="control-label" for="basicinput">Due Amount<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <input type="number" step="any" min="0" name="dueAmount" placeholder="Enter Due Amount" class="span8 tip" required>
                                             </div>
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Due Date</label>
+                                            <label class="control-label" for="basicinput">Due Date<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <input placeholder="Due date" name="dueDate" class="span8 tip" type="text" onfocus="(this.type='date')" id="date" required>
 

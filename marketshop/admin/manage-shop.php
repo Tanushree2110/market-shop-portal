@@ -106,21 +106,21 @@ if (strlen($_SESSION['email']) == 0) {
                                     <form class="form-horizontal row-fluid" name="shop" method="post" action="manage-shop.php">
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Shop Id</label>
+                                            <label class="control-label" for="basicinput">Shop Id<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <input type="text" placeholder="Shop Id" name="shopID" class="span8 tip" style="color:dimgray;" required>
                                             </div>
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Shop Name</label>
+                                            <label class="control-label" for="basicinput">Shop Name<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <input type="text" placeholder="Shop Name" name="shopName" class="span8 tip" style="color:dimgray;" required>
                                             </div>
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Location
+                                            <label class="control-label" for="basicinput">Location<span class="error" style="color:red;">*</span>
                                             </label>
                                             <div class="controls">
                                                 <input type="text" placeholder="Location" name="location" class="span8 tip" style="color:dimgray;" required>
@@ -128,7 +128,7 @@ if (strlen($_SESSION['email']) == 0) {
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">License expiry date
+                                            <label class="control-label" for="basicinput">License expiry date<span class="error" style="color:red;">*</span>
                                             </label>
                                             <div class="controls">
                                                 <input placeholder="License expiry date" name="licVal" class="span8 tip" type="text" onfocus="(this.type='date')" id="date" style="color:dimgray;" required>
@@ -136,7 +136,7 @@ if (strlen($_SESSION['email']) == 0) {
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">License extension period
+                                            <label class="control-label" for="basicinput">License extension period<span class="error" style="color:red;">*</span>
                                             </label>
                                             <div class="controls">
                                                 <input type="number" step="any" min="0" placeholder="License extension period" name="licExt" class="span8 tip" style="color:dimgray;" required>
@@ -144,7 +144,7 @@ if (strlen($_SESSION['email']) == 0) {
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Contact Number
+                                            <label class="control-label" for="basicinput">Contact Number<span class="error" style="color:red;">*</span>
                                             </label>
                                             <div class="controls">
                                                 <input type="tel" placeholder="Contact Number" name="contact" class="span8 tip" style="color:dimgray;" pattern="[1-9]{1}[0-9]{9}" required>

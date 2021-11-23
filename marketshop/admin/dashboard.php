@@ -95,7 +95,7 @@ if (strlen($_SESSION['email']) == 0) {
                                     <form class="form-horizontal row-fluid" name="chngpwd" method="post" onSubmit="return valid();">
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput" style="color: #696969; font-weight:bold">Current Password</label>
+                                            <label class="control-label" for="basicinput" style="color: #696969; font-weight:bold">Current Password<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <input type="password" placeholder="Enter the current password" name="password" class="span8 tip" required>
                                             </div>
@@ -103,14 +103,14 @@ if (strlen($_SESSION['email']) == 0) {
 
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput" style="color: #696969; font-weight:bold">New Password</label>
+                                            <label class="control-label" for="basicinput" style="color: #696969; font-weight:bold">New Password<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <input type="password" placeholder="Enter the new password" name="newpassword" class="span8 tip" required>
                                             </div>
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput" style="color: #696969; font-weight:bold">Confirm New Password</label>
+                                            <label class="control-label" for="basicinput" style="color: #696969; font-weight:bold">Confirm New Password<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <input type="password" placeholder="Re-enter the new password" name="confirmpassword" class="span8 tip" required>
                                             </div>

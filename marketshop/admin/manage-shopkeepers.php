@@ -120,21 +120,21 @@ if (strlen($_SESSION['email']) == 0) {
                                     <form class="form-horizontal row-fluid" name="shopkeeper" method="post" action="manage-shopkeepers.php">
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Shopkeeper Id</label>
+                                            <label class="control-label" for="basicinput">Shopkeeper Id<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <input type="text" placeholder="Shopkeeper Id" name="shopkeeperID" class="span8 tip" style="color:dimgray;" required>
                                             </div>
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Shopkeeper Name</label>
+                                            <label class="control-label" for="basicinput">Shopkeeper Name<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <input type="text" placeholder="Name" name="name" class="span8 tip" style="color:dimgray;" required>
                                             </div>
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Shop Name</label>
+                                            <label class="control-label" for="basicinput">Shop Name<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <select onchange="changeMe(this)" name="shopName" class="span8 tip" id="shopName" required>
                                                     <option hidden value=""> Select Shop</option>
@@ -147,7 +147,7 @@ if (strlen($_SESSION['email']) == 0) {
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Role</label>
+                                            <label class="control-label" for="basicinput">Role<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <select onchange="changeMe(this)" name="role" id="role" class="span8 tip" required>
                                                     <option hidden value="">Select Role</option>
@@ -160,7 +160,7 @@ if (strlen($_SESSION['email']) == 0) {
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Gender</label>
+                                            <label class="control-label" for="basicinput">Gender<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <select onchange="changeMe(this)" name="gender" id="gender" class="span8 tip" required>
                                                     <option hidden value="">Select Gender</option>
@@ -175,7 +175,7 @@ if (strlen($_SESSION['email']) == 0) {
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Security Pass validity
+                                            <label class="control-label" for="basicinput">Security Pass validity<span class="error" style="color:red;">*</span>
                                             </label>
                                             <div class="controls">
                                                 <input placeholder="Security Pass Validity" name="secPassVal" class="span8 tip" type="text" onfocus="(this.type='date')" id="date" style="color:dimgray;" required>
@@ -183,7 +183,7 @@ if (strlen($_SESSION['email']) == 0) {
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Contact Number
+                                            <label class="control-label" for="basicinput">Contact Number<span class="error" style="color:red;">*</span>
                                             </label>
                                             <div class="controls">
                                                 <input type="number" placeholder="Contact Number" name="contact" class="span8 tip" style="color:dimgray;" required>
@@ -191,7 +191,7 @@ if (strlen($_SESSION['email']) == 0) {
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Address
+                                            <label class="control-label" for="basicinput">Address<span class="error" style="color:red;">*</span>
                                             </label>
                                             <div class="controls">
                                                 <input type="text" placeholder="Address" name="address" class="span8 tip" style="color:dimgray;" required>

@@ -78,7 +78,7 @@ if (strlen($_SESSION['email']) == 0) {
 
                     <tr height="20">
                         <td class="fontkink1"><b>Due Date:</b></td>
-                        <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td>
+                        <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td>
                         <td class="fontkink"><?php echo $row['dueDate']; ?></td>
                     </tr>
                     <tr height="20">
@@ -94,15 +94,18 @@ if (strlen($_SESSION['email']) == 0) {
 
 
                     <tr>
-                        <td colspan="2">
+                        <td colspan="5">
                             <hr />
                         </td>
                     </tr>
                     <?php ?>
                 </table>
-
-                <input type="date" class="form-control mb-4" name="dop" style="width:300px;" placeholder="Date of payment" required>
-                <textarea cols="50" rows="7" name="remark"></textarea>
+                <div>
+                    <label>Date of Payment</label><span class="error" style="color:red;">*</span><input type="text" class="form-control mb-4" name="dop" style="width:300px;" onfocus="(this.type='date')" id="dof" style="color:dimgray;" placeholder="Date of payment" required>
+                </div>
+                <div>
+                    <label>Remarks</label><textarea class="form-control mb-4" cols="50" rows="7" name="remark" placeholder="Payment description"></textarea>
+                </div>
                 <div class="row">
                     <div class="col-sm-12 text-center col-sm-offset-2">
                         <input id="button" class="btn btn-primary btn-block my-4" name="submit2" type="submit" value="Submit" Style="width: 100px;">&emsp;&emsp;&emsp;&emsp;

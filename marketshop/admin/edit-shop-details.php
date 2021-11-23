@@ -72,14 +72,14 @@ if (strlen($_SESSION['email']) == 0) {
                                         $row = mysqli_fetch_array($query);
                                         ?>
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Shop name</label>
+                                            <label class="control-label" for="basicinput">Shop name<span class="error" style="color:red;">*</span></label>
                                             <div class="controls">
                                                 <input type="text" placeholder="Shop name" name="shopName" value="<?php echo  htmlentities($row['shopName']); ?>" class="span8 tip" required>
                                             </div>
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">License validity
+                                            <label class="control-label" for="basicinput">License validity<span class="error" style="color:red;">*</span>
                                             </label>
                                             <div class="controls">
                                                 <input placeholder="License expiry date" name="licVal" value="<?php echo  htmlentities($row['licVal']); ?>" class="span8 tip" type="text" onfocus="(this.type='date')" id="date" style="color:dimgray;" required>
@@ -87,7 +87,7 @@ if (strlen($_SESSION['email']) == 0) {
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">License extension period
+                                            <label class="control-label" for="basicinput">License extension period<span class="error" style="color:red;">*</span>
                                             </label>
                                             <div class="controls">
                                                 <input type="number" step="any" min="0" placeholder="Extension period" name="licExt" value="<?php echo  htmlentities($row['licExt']); ?>" class="span8 tip" style="color:dimgray;" required>
@@ -95,7 +95,7 @@ if (strlen($_SESSION['email']) == 0) {
                                         </div>
 
                                         <div class="control-group">
-                                            <label class="control-label" for="basicinput">Contact
+                                            <label class="control-label" for="basicinput">Contact<span class="error" style="color:red;">*</span>
                                             </label>
                                             <div class="controls">
                                                 <input type="number" min="0" placeholder="Contact number without country code" name="contact" pattern="[1-9]{1}[0-9]{9}" value="<?php echo  htmlentities($row['contact']); ?>" class="span8 tip" style="color:dimgray;" required>

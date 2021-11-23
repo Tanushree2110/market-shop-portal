@@ -78,7 +78,7 @@ if (isset($_POST['submit'])) {
 
                 <tr height="20">
                     <td style="color:grey" class="fontkink1"><b>Shop Name:</b></td>
-                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td>
+                    <td>&emsp;&emsp;&emsp;&emsp;</td>
                     
                     <td class="fontkink" style="color:grey;" ><?php echo $row['shopName']; ?></td>
                 </tr>
@@ -90,7 +90,7 @@ if (isset($_POST['submit'])) {
                 </tr>
 
                 <tr>
-                    <td colspan="2">
+                    <td colspan="3">
                         <hr />
                     </td>
                 </tr>
@@ -101,7 +101,7 @@ if (isset($_POST['submit'])) {
 
             <input type="number" min="0" max="5" class="form-control mb-4" name="services" placeholder="Services" required>
 
-            <textarea cols="50" rows="7" name="remark"></textarea>
+            <textarea cols="30" rows="7" name="remark"></textarea>
             <div class="row">
                 <div class="col-sm-12 text-center col-sm-offset-2">
                     <input id="button" class="btn btn-primary btn-block my-4" name="submit" type="submit" value="Submit" Style="width: 100px;">&emsp;&emsp;&emsp;&emsp;

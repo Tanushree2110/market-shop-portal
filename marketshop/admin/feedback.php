@@ -127,12 +127,9 @@ if (strlen($_SESSION['email']) == 0) {
 
                                         <tbody>
                                             <?php
-                                            $query = mysqli_query($con, "SELECT * FROM feedback ORDER BY dof DESC");
+                                            $query = mysqli_query($con, "SELECT feedback.shopID, shop.shopName, feedback.availability, feedback.dof, feedback.services, feedback.description FROM feedback JOIN shop ON feedback.shopID=shop.shopID ORDER BY dof DESC");
                                             $cnt = 1;
                                             while ($row = mysqli_fetch_array($query)) {
-                                                $shopID = $row['shopID'];
-                                                $sql = mysqli_query($con, "SELECT * FROM shop WHERE shopID='$shopID'");
-                                                $row2 = mysqli_fetch_array($sql);
                                                 $date=$row['dof'];
                                                 $datec=strtotime($date);
                                                 $final=date('d/m/Y H:i:s',$datec);
@@ -140,7 +137,7 @@ if (strlen($_SESSION['email']) == 0) {
                                                 <tr>
                                                     <td><?php echo htmlentities($cnt); ?></td>
                                                     <td><?php echo htmlentities($row['shopID']); ?></td>
-                                                    <td><?php echo htmlentities($row2['shopName']); ?></td>
+                                                    <td><?php echo htmlentities($row['shopName']); ?></td>
                                                     <td><?php echo htmlentities($final); ?></td>
                                                     <td><?php echo htmlentities($row['availability']); ?></td>
                                                     <td><?php echo htmlentities($row['services']); ?></td>

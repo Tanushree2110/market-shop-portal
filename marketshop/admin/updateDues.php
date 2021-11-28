@@ -9,7 +9,7 @@ if (strlen($_SESSION['email']) == 0) {
     if (isset($_POST['submit2'])) {
         $remark = $_POST['remark']; //space char
         $dop = $_POST['dop'];
-        $query = mysqli_query($con, "insert into payment value('$oid','$dop','$remark')");
+        $query = mysqli_query($con, "insert into payment value(NULL,'$oid','$dop','$remark')");
         if ($query) {
             echo "<script>alert('Payment status updated successfully. Refresh to view changes.');</script>";
             echo "<script>window.close()</script>";

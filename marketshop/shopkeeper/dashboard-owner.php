@@ -129,10 +129,10 @@ if (strlen($_SESSION['shopkeeperID']) == 0) {
                         <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
                     </div>
                 </div>
-                <div>
+                <div><br>
                     <?php if ($_SESSION['msg'] == "true") { ?>
-                        <div class="alert2">
-                            <marquee behavior="alternate">You have pending dues. Visit <a href="#check" style="color:yellow">Pending Dues</a> to know more.</marquee>
+                        <div class="alert2" >
+                            <marquee behavior="alternate"><div>You have pending dues. Visit <a href="#check" style="color:yellow">Pending Dues</a> to know more.</div></marquee>
                         </div>
                     <?php } ?>
                 </div>

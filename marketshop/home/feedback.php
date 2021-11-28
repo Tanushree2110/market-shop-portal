@@ -9,21 +9,16 @@ if (isset($_POST['submit'])) {
     $remark = $_POST['remark']; //space char
     $availability = $_POST['availability'];
     $services = $_POST['services'];
-    $query = mysqli_query($con, "insert into feedback value('$shopID','$availability','$services','$remark',NOW())");
-    echo "<script>alert('Your feedback has been saved!');</script>";
-    echo "<script>window.close()</script>";
+    $query = mysqli_query($con, "insert into feedback value(NULL,'$shopID','$availability','$services','$remark',DEFAULT)");
+    if ($query) {
+        echo "<script>alert('Your feedback has been saved!');</script>";
+        echo "<script>window.close()</script>";
+    } else {
+        echo "<script>alert('Error! Please try again!');</script>";
+    }
 }
 
 ?>
-<script language="javascript" type="text/javascript">
-    function f2() {
-        window.close();
-    }
-
-    function f3() {
-        window.print();
-    }
-</script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -50,11 +45,6 @@ if (isset($_POST['submit'])) {
         function f2() {
             window.close();
         }
-        ser
-
-        function f3() {
-            window.print();
-        }
     </script>
 </head>
 
@@ -70,23 +60,23 @@ if (isset($_POST['submit'])) {
                 $row = mysqli_fetch_array($ret);
                 ?>
 
-                <tr height="20" >
+                <tr height="20">
                     <td style="color:grey" class="fontkink1"><b>Shop Id:</b></td>
                     <td></td>
-                    <td class="fontkink" style="color:grey" ><?php echo $row['shopID']; ?></td>
+                    <td class="fontkink" style="color:grey"><?php echo $row['shopID']; ?></td>
                 </tr>
 
                 <tr height="20">
                     <td style="color:grey" class="fontkink1"><b>Shop Name:</b></td>
                     <td>&emsp;&emsp;&emsp;&emsp;</td>
-                    
-                    <td class="fontkink" style="color:grey;" ><?php echo $row['shopName']; ?></td>
+
+                    <td class="fontkink" style="color:grey;"><?php echo $row['shopName']; ?></td>
                 </tr>
 
                 <tr height="20">
                     <td style="color:grey" class="fontkink1"><b>Location:</b></td>
                     <td></td>
-                    <td class="fontkink" style="color:grey" ><?php echo $row['location']; ?></td>
+                    <td class="fontkink" style="color:grey"><?php echo $row['location']; ?></td>
                 </tr>
 
                 <tr>
@@ -101,11 +91,11 @@ if (isset($_POST['submit'])) {
 
             <input type="number" min="0" max="5" class="form-control mb-4" name="services" placeholder="Services" required>
 
-            <textarea cols="30" rows="7" name="remark"></textarea>
+            <textarea cols="50" rows="7" name="remark"></textarea>
             <div class="row">
                 <div class="col-sm-12 text-center col-sm-offset-2">
                     <input id="button" class="btn btn-primary btn-block my-4" name="submit" type="submit" value="Submit" Style="width: 100px;">&emsp;&emsp;&emsp;&emsp;
-                    <input id="button" class="btn btn-danger btn-block my-4" name="Submit2" type="submit" value="Close" onClick="return f2();"  Style="width: 100px;">
+                    <input id="button" class="btn btn-danger btn-block my-4" name="Submit2" type="submit" value="Close" onClick="return f2();" Style="width: 100px;">
                 </div>
             </div>
 

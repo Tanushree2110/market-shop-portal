@@ -24,8 +24,6 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
 
@@ -42,40 +40,39 @@ if (isset($_POST['submit'])) {
 <body>
 	<nav id="navbar_top" class="navbar sticky-top navbar-dark bg-primary">
 		<div class="container">
-			<a class="navbar-brand" href="#">Market Shop Admin</a>
+			<a class="navbar-brand" href="#">Market Shop | Admin</a>
 		</div>
 	</nav>
-	<section class="vh-100">
-		<div class="container py-5 h-custom">
-			<div class="row d-flex justify-content-center align-items-center h-100">
-				<div class="col-md-8 col-lg-7 col-xl-6">
-					<img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-login-form/draw2.png" class="img-fluid" alt="Sample image">
-				</div>
-				<div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-					<form method="post" action="login.php" enctype="multipart/form-data">
-						<h3 style="font-family: serif; color:grey; text-align:center;">Login</h3>
-						<div class="form-group">
-							<h5 style="font-family: serif;  font-size: 16px;"><label class="form-label">Email Id<span class="error" style="color:red;">*</span></label></h5>
-							<div class="form-outline mb-4">
-								<input type="email" name="email" placeholder="example@gmail.com" class="form-control form-control-lg">
-							</div>
-						</div>
-						<div class="form-group">
-							<h5 style="font-family: serif;  font-size: 16px;"><label class="form-label">Password<span class="error" style="color:red;">*</span>
-								</label></h5>
-							<input type="password" name="password" placeholder="Password" class="form-control form-control-lg">
-						</div>
-						<div class="form-group">
-							<div class="text-center text-lg-start mt-4 pt-2">
-								<button type="submit" class="btn btn-primary btn-md" style="padding-left: 1.5rem; padding-right: 1.5rem; font-weight: bold; font-size:16px; font-family:Sans-serif, Verdana;" name="submit">Login</button>
-							</div>
-						</div>
 
-					</form>
-				</div>
+	<div class="container py-5 h-custom" style="margin-bottom:0">
+		<div class="row d-flex justify-content-center align-items-center h-100">
+			<div class="col-md-8 col-lg-7 col-xl-6">
+				<img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-login-form/draw2.png" class="img-fluid" alt="Sample image">
+			</div>
+			<div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+				<form method="post" action="login.php" enctype="multipart/form-data">
+					<h3 style="font-family: serif; color:grey; text-align:center;">Login</h3>
+					<div class="form-group">
+						<h5 style="font-family: serif;  font-size: 16px;"><label class="form-label">Email Id<span class="error" style="color:red;">*</span></label></h5>
+						<div class="form-outline mb-4">
+							<input type="email" name="email" placeholder="example@gmail.com" class="form-control form-control-lg">
+						</div>
+					</div>
+					<div class="form-group">
+						<h5 style="font-family: serif;  font-size: 16px;"><label class="form-label">Password<span class="error" style="color:red;">*</span>
+							</label></h5>
+						<input type="password" name="password" placeholder="Password" class="form-control form-control-lg">
+					</div>
+					<div class="form-group">
+						<div class="text-center text-lg-start mt-4 pt-2">
+							<button type="submit" class="btn btn-primary btn-md" style="padding-left: 1.5rem; padding-right: 1.5rem; font-weight: bold; font-size:16px; font-family:Sans-serif, Verdana;" name="submit">Login</button>
+						</div>
+					</div>
+
+				</form>
 			</div>
 		</div>
-	</section>
+	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

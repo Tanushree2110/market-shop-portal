@@ -10,13 +10,9 @@ if (strlen($_SESSION['email']) == 0) {
         $dueAmount = $_POST['dueAmount'];
         $dueDate = $_POST['dueDate'];
 
-        $query = mysqli_query($con, "select max(dueID) as id from dues");
-        $result = mysqli_fetch_array($query);
-        $dueID = $result['id'] + 1;
-
         $status = 'Pending';
 
-        $sql = mysqli_query($con, "insert into dues value('$dueID','$shopID','$dueAmount','$dueDate','$dueType','$status')");
+        $sql = mysqli_query($con, "insert into dues value(NULL,'$shopID','$dueAmount','$dueDate','$dueType','$status')");
         if ($sql)
             $_SESSION['msg'] = "Due added successfully!";
         else

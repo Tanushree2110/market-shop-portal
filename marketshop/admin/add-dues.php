@@ -9,9 +9,7 @@ if (strlen($_SESSION['email']) == 0) {
         $dueType = $_POST['dueType'];
         $dueAmount = $_POST['dueAmount'];
         $dueDate = $_POST['dueDate'];
-
         $status = 'Pending';
-
         $sql = mysqli_query($con, "insert into dues value(NULL,'$shopID','$dueAmount','$dueDate','$dueType','$status')");
         if ($sql)
             $_SESSION['msg'] = "Due added successfully!";
@@ -120,9 +118,9 @@ if (strlen($_SESSION['email']) == 0) {
                                                     <option hidden value="">Select Due Type</option>
 
                                                     <option><?php echo "Electricity"; ?></option>
-                                                    <option><?php echo "License renewal"; ?></option>
                                                     <option><?php echo "Rent"; ?></option>
                                                     <option><?php echo "Water"; ?></option>
+                                                    <option><?php echo "Miscellaneous"; ?></option>
 
                                                 </select>
                                             </div>

@@ -41,6 +41,18 @@ include('database.php');
                     Add Dues
                 </a>
             </li>
+            <li>
+                <a href="license.php" style="background:#24a0de;color:white;text-shadow:none">
+                    <i class="menu-icon icon-tasks" style="color:white;text-shadow:none;font-weight:bolder"></i>
+                    License Renewal Requests
+                </a>
+            </li>
+            <li>
+                <a href="security-pass.php" style="background:#24a0de;color:white;text-shadow:none">
+                    <i class="menu-icon icon-tasks" style="color:white;text-shadow:none;font-weight:bolder"></i>
+                    Security Pass Requests
+                </a>
+            </li>
         </ul>
 
 

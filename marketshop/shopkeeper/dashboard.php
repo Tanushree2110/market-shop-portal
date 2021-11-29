@@ -66,6 +66,28 @@ if (strlen($_SESSION['shopkeeperID']) == 0) {
                 cursor: pointer;
                 border: solid 1px #BA68C8
             }
+
+            .alert2 {
+                padding: 20px;
+                background-color: #f44336;
+                /* Red */
+                color: white;
+                margin-bottom: 15px;
+            }
+
+            input[name="submit3"] {
+                background: none;
+                border: none;
+                outline: none;
+                text-decoration: none;
+                color: yellow;
+                cursor: pointer;
+
+            }
+
+            input[name="submit3"]:hover {
+                color: lightblue;
+            }
         </style>
 
 
@@ -179,6 +201,44 @@ if (strlen($_SESSION['shopkeeperID']) == 0) {
                             </table>
                         </div>
                     </div>
+                    <?php
+                    $sql = mysqli_query($con, "SELECT secPassVal as dt, DATEDIFF(secPassVal,CURRENT_TIMESTAMP()) as diff, secReq as req FROM shopkeeper where shopkeeperID='$shopkeeperID'");
+                    $row = mysqli_fetch_array($sql);
+                    $date = $row['dt'];
+                    $datec = strtotime($date);
+                    $final = date('d/m/Y', $datec);
+                    if ($row['diff'] < 0 and $row['req'] == 'Inactive') { ?>
+
+                        <div class="alert2" id="expire2">
+                            <div style="display: flex;flex-flow: row wrap;">
+                                <form method="post">Your security pass has expired. Click<input type="submit" id="submit4" name="submit3" value="here"></form> to request pass renewal.
+                            </div>
+                        </div>
+
+                    <?php } elseif ($row['diff'] <= 10 and $row['req'] == 'Inactive') { ?>
+
+                        <div class="alert2" id="expire2">
+                            <div style="display: flex;flex-flow: row wrap;">
+                                <form method="post">Your security pass will expire on <?php echo htmlentities($final); ?>. Click<input type="submit" id="submit4" name="submit3" value="here"></form> to request pass renewal.
+                            </div>
+                        </div>
+
+                    <?php } elseif ($row['req'] == 'Active') { ?>
+
+                        <div class="alert2" id="requested2" style="background-color:orange;">
+                            <div style="display: flex;flex-flow: row wrap;">
+                                <marquee behavior="alternate">Your security pass renewal request has been submitted successfully. Any updates will be reflected here.</marquee>
+                            </div>
+                        </div>
+                    <?php } elseif ($row['req'] == 'Rejected') { ?>
+                        <div class="alert2" id="rejected2">
+                            <div style="display: flex;flex-flow: row wrap;">
+                                <form method="post">Your security pass renewal request has been rejected. Click<input type="submit" id="submit5" name="submit3" value="here"></form> to try again or contact the administration.
+                            </div>
+                        </div>
+                    <?php } ?>
+                    <div id="msg2"></div>
+
                 </div>
             </section><!-- End Profile Section -->
 
@@ -285,6 +345,46 @@ if (strlen($_SESSION['shopkeeperID']) == 0) {
                             }
                         });
                     }
+                    return false;
+                });
+            </script>
+
+            <script type="text/javascript">
+                $('#submit4').click(function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "pass-request.php",
+                        data: {
+
+                        },
+                        cache: false,
+                        success: function(html) {
+                            var x = document.getElementById("expire2");
+                            x.style.display = "none";
+
+                            $('#msg2').html("<div class='alert2' style='background-color:orange;'><div>Your security pass renewal request has been submitted successfully. Any updates will be reflected here.</div></div>");
+                        }
+                    });
+                    return false;
+                });
+            </script>
+
+            <script type="text/javascript">
+                $('#submit5').click(function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "pass-request.php",
+                        data: {
+
+                        },
+                        cache: false,
+                        success: function(html) {
+
+                            var y = document.getElementById("rejected2");
+                            y.style.display = "none";
+                            $('#msg2').html("<div class='alert2' style='background-color:orange;'><div>Your security pass renewal request has been submitted successfully. Any updates will be reflected here.</div></div>");
+                        }
+                    });
                     return false;
                 });
             </script>

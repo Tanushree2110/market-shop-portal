@@ -18,7 +18,6 @@ if (strlen($_SESSION['shopkeeperID']) == 0) {
     }
 
 ?>
-
     <!DOCTYPE html>
     <html lang="en">
 
@@ -85,10 +84,21 @@ if (strlen($_SESSION['shopkeeperID']) == 0) {
                 color: white;
                 margin-bottom: 15px;
             }
+
+            input[name="submit3"] {
+                background: none;
+                border: none;
+                outline: none;
+                text-decoration: none;
+                color: yellow;
+                cursor: pointer;
+
+            }
+
+            input[name="submit3"]:hover {
+                color: lightblue;
+            }
         </style>
-
-
-
     </head>
 
     <body>
@@ -122,7 +132,6 @@ if (strlen($_SESSION['shopkeeperID']) == 0) {
                         <div class="d-flex">
                             <a href="#profile" class="btn-get-started scrollto" style="background:blue; color:white;">Profile</a>
                         </div>
-
                         <br />
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 hero-img">
@@ -131,15 +140,15 @@ if (strlen($_SESSION['shopkeeperID']) == 0) {
                 </div>
                 <div><br>
                     <?php if ($_SESSION['msg'] == "true") { ?>
-                        <div class="alert2" >
-                            <marquee behavior="alternate"><div>You have pending dues. Visit <a href="#check" style="color:yellow">Pending Dues</a> to know more.</div></marquee>
+                        <div class="alert2">
+                            <marquee behavior="alternate">
+                                <div>You have pending dues. Visit <a href="#check" style="color:yellow">Pending Dues</a> to know more.</div>
+                            </marquee>
                         </div>
                     <?php } ?>
                 </div>
             </div>
-
         </section>
-        <br><br><br><br>
 
         <main id="main">
             <!-- ======= Profile Section ======= -->
@@ -162,7 +171,7 @@ if (strlen($_SESSION['shopkeeperID']) == 0) {
                                 $query = mysqli_query($con, "SELECT * FROM shopkeeper WHERE shopkeeperID='$shopkeeperID'");
                                 $row = mysqli_fetch_array($query);
                                 $shopID = $row['shopID'];
-                                $sql = mysqli_query($con, "SELECT shopName FROM shop WHERE shopID='$shopID'");
+                                $sql = mysqli_query($con, "SELECT * FROM shop WHERE shopID='$shopID'");
                                 $ret = mysqli_fetch_array($sql);
                                 ?>
                                 <tr height="20">
@@ -184,6 +193,10 @@ if (strlen($_SESSION['shopkeeperID']) == 0) {
                                 <tr height="20">
                                     <td><b>Security Pass Validity:</b></td>
                                     <td><?php echo $row['secPassVal']; ?></td>
+                                </tr>
+                                <tr height="20">
+                                    <td><b>Shop License Expiry Date:</b></td>
+                                    <td><?php echo $ret['licVal']; ?></td>
                                 </tr>
                                 <tr height="20">
                                     <td><b>Address:</b></td>
@@ -209,11 +222,91 @@ if (strlen($_SESSION['shopkeeperID']) == 0) {
                             </table>
                         </div>
                     </div>
-                </div>
-            </section><!-- End Profile Section -->
-            <br><br><br>
+                
+                <?php
+                    $sql = mysqli_query($con, "SELECT secPassVal as dt, DATEDIFF(secPassVal,CURRENT_TIMESTAMP()) as diff, secReq as req FROM shopkeeper where shopkeeperID='$shopkeeperID'");
+                    $row = mysqli_fetch_array($sql);
+                    $date = $row['dt'];
+                    $datec = strtotime($date);
+                    $final = date('d/m/Y', $datec);
+                    if ($row['diff'] < 0 and $row['req'] == 'Inactive') { ?>
 
-            <section id="check" class="about">
+                        <div class="alert2" id="expire2">
+                            <div style="display: flex;flex-flow: row wrap;">
+                                <form method="post">Your security pass has expired. Click<input type="submit" id="submit4" name="submit3" value="here"></form> to request pass renewal.
+                            </div>
+                        </div>
+
+                    <?php } elseif ($row['diff'] <= 10 and $row['req'] == 'Inactive') { ?>
+
+                        <div class="alert2" id="expire2">
+                            <div style="display: flex;flex-flow: row wrap;">
+                                <form method="post">Your security pass will expire on  <?php echo htmlentities($final); ?>. Click<input type="submit" id="submit4" name="submit3" value="here"></form> to request pass renewal.
+                            </div>
+                        </div>
+
+                    <?php } elseif ($row['req'] == 'Active') { ?>
+
+                        <div class="alert2" id="requested2" style="background-color:orange;">
+                            <div style="display: flex;flex-flow: row wrap;">
+                                <marquee behavior="alternate">Your security pass renewal request has been submitted successfully. Any updates will be reflected here.</marquee>
+                            </div>
+                        </div>
+                    <?php } elseif ($row['req'] == 'Rejected') { ?>
+                        <div class="alert2" id="rejected2">
+                            <div style="display: flex;flex-flow: row wrap;">
+                                <form method="post">Your security pass renewal request has been rejected. Click<input type="submit" id="submit5" name="submit3" value="here"></form> to try again or contact the administration.
+                            </div>
+                        </div>
+                    <?php } ?>
+                    <div id="msg2"></div>
+                    
+            
+
+
+
+           
+                    <?php
+                    $sql = mysqli_query($con, "SELECT licVal as dt, DATEDIFF(licVal,CURRENT_TIMESTAMP()) as diff, licReq as req FROM shop where shopID='$shopID'");
+                    $row = mysqli_fetch_array($sql);
+                    $date = $row['dt'];
+                    $datec = strtotime($date);
+                    $final = date('d/m/Y', $datec);
+                    if ($row['diff'] < 0 and $row['req'] == 'Inactive') { ?>
+
+                        <div class="alert2" id="expire">
+                            <div style="display: flex;flex-flow: row wrap;">
+                                <form method="post">Your license has expired. Click<input type="submit" id="submit3" name="submit3" value="here"></form> to request license renewal.
+                            </div>
+                        </div>
+
+                    <?php } elseif ($row['diff'] <= 10 and $row['req'] == 'Inactive') { ?>
+
+                        <div class="alert2" id="expire">
+                            <div style="display: flex;flex-flow: row wrap;">
+                                <form method="post">Your license will expire on  <?php echo htmlentities($final); ?>. Click<input type="submit" id="submit3" name="submit3" value="here"></form> to request license renewal.
+                            </div>
+                        </div>
+
+                    <?php } elseif ($row['req'] == 'Active') { ?>
+
+                        <div class="alert2" id="requested" style="background-color:orange;">
+                            <div style="display: flex;flex-flow: row wrap;">
+                                <marquee behavior="alternate">Your license request renewal request has been submitted successfully. Any updates will be reflected here.</marquee>
+                            </div>
+                        </div>
+                    <?php } elseif ($row['req'] == 'Rejected') { ?>
+                        <div class="alert2" id="rejected">
+                            <div style="display: flex;flex-flow: row wrap;">
+                                <form method="post">Your license renewal request has been rejected. Click<input type="submit" id="submit4" name="submit3" value="here"></form> to try again or contact the administration.
+                            </div>
+                        </div>
+                    <?php } ?>
+                    <div id="msg"></div>
+                    </section><!-- End Profile Section -->
+            <br><br><br>
+                    <section id="check" class="about">
+                    
                 <div class="container">
                     <table class="table table-hover table-striped table-bordered table-responsive">
                         <h3 style="text-align:center; color:#5f687b; font-weight:700; font-family:Raleway; font-size:32px;">Pending Dues</h3><br>
@@ -252,11 +345,11 @@ if (strlen($_SESSION['shopkeeperID']) == 0) {
                     <?php
                     if ($count == 0) { ?>
                         <div>
-                            <h5 style='text-align:center; color:#16df7e; '>No Pending Dues</h5>
+                            <h5 style='text-align:center; color:#16df7e;'>No Pending Dues</h5>
                         </div>
                     <?php
                     } ?>
-                </div>
+                </div></div>
             </section>
 
 
@@ -306,28 +399,20 @@ if (strlen($_SESSION['shopkeeperID']) == 0) {
             <section id="change" class="about">
                 <div class="container rounded bg-white mt-5 mb-5">
                     <div class="row">
-
                         <div class="col-md-5 border-right">
                             <div class="p-3 py-5">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
-
                                     <h3 class="text-right" style="color:#5f687b; font-weight:700; font-family:Raleway; font-size:32px;">Change Password</h3>
                                 </div>
                                 <div id="success2">
-
                                 </div>
-
                                 <form name="change_password" method="post">
-
-
                                     <div class="row mt-2">
                                         <div class="col-md-6"><label style="font-size:medium;font-weight:bold;color:grey;">New Password</label><input type="password" name="new" id="new" class="form-control" placeholder="New Password" style="color:dimgray;" required></div>
                                     </div>
-
                                     <div class="row mt-2">
                                         <div class="col-md-6"><label style="font-size:medium;font-weight:bold;color:grey;">Confirm Password</label><input type="password" name="confirm" id="confirm" class="form-control" placeholder="Confirm Password" style="color:dimgray;" required></div>
                                     </div>
-
                                     <div class="mt-5 text-right"><button class="btn btn-primary profile-button" style="background:blue;" name="submit" id="submit2" type="submit" onclick="return updatePassword();">Change Password</button></div>
                                 </form>
                             </div>
@@ -339,13 +424,7 @@ if (strlen($_SESSION['shopkeeperID']) == 0) {
                 </div>
             </section><!-- End change password Section -->
 
-
-
-
-
-
             <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <script type="text/javascript">
                 $('#submit1').click(function() {
@@ -367,6 +446,85 @@ if (strlen($_SESSION['shopkeeperID']) == 0) {
                             }
                         });
                     }
+                    return false;
+                });
+            </script>
+
+            <script type="text/javascript">
+                $('#submit3').click(function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "request.php",
+                        data: {
+
+                        },
+                        cache: false,
+                        success: function(html) {
+                            var x = document.getElementById("expire");
+                            x.style.display = "none";
+
+                            $('#msg').html("<div class='alert2' style='background-color:orange;'><div>Your license request renewal request has been submitted successfully. Any updates will be reflected here.</div></div>");
+                        }
+                    });
+                    return false;
+                });
+            </script>
+
+            <script type="text/javascript">
+                $('#submit4').click(function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "request.php",
+                        data: {
+
+                        },
+                        cache: false,
+                        success: function(html) {
+
+                            var y = document.getElementById("rejected");
+                            y.style.display = "none";
+                            $('#msg').html("<div class='alert2' style='background-color:orange;'><div>Your license renewal request has been submitted successfully. Any updates will be reflected here.</div></div>");
+                        }
+                    });
+                    return false;
+                });
+            </script>
+            <script type="text/javascript">
+                $('#submit4').click(function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "pass-request.php",
+                        data: {
+
+                        },
+                        cache: false,
+                        success: function(html) {
+                            var x = document.getElementById("expire2");
+                            x.style.display = "none";
+
+                            $('#msg2').html("<div class='alert2' style='background-color:orange;'><div>Your security pass renewal request has been submitted successfully. Any updates will be reflected here.</div></div>");
+                        }
+                    });
+                    return false;
+                });
+            </script>
+
+            <script type="text/javascript">
+                $('#submit5').click(function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "pass-request.php",
+                        data: {
+
+                        },
+                        cache: false,
+                        success: function(html) {
+
+                            var y = document.getElementById("rejected2");
+                            y.style.display = "none";
+                            $('#msg2').html("<div class='alert2' style='background-color:orange;'><div>Your security pass renewal request has been submitted successfully. Any updates will be reflected here.</div></div>");
+                        }
+                    });
                     return false;
                 });
             </script>

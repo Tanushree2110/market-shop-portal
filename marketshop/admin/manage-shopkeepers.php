@@ -22,9 +22,9 @@ if (strlen($_SESSION['email']) == 0) {
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         $passwd = substr(str_shuffle($chars), 0, 8);
         $password=md5($passwd);
-        $sql = mysqli_query($con, "insert into shopkeeper values('$shopkeeperID','$name','$contact','$address','$shopID','$gender','$role','$secPassVal','$password')");
-        if (mysqli_errno($con) == 1062) {
-            $_SESSION['msg'] = 'Failed to add shopkeeper. Possible error: Duplicate shopkeeper Id';
+        $sql = mysqli_query($con, "insert into shopkeeper values('$shopkeeperID','$name','$contact','$address','$shopID','$gender','$role','$secPassVal','$password',DEFAULT)");
+        if ($sql ==0) {
+            $_SESSION['msg'] = 'Failed to add shopkeeper.';
             $_SESSION['pwd']='';
         } else {
             $_SESSION['msg'] = "Shopkeeper added!";
@@ -251,7 +251,7 @@ if (strlen($_SESSION['email']) == 0) {
                                                     <td style="padding:5px;"><?php echo htmlentities($row['address']); ?></td>
                                                     <td style="padding:10px;">
                                                         <a href="edit-shopkeeper-details.php?shopkeeperID=<?php echo $row['shopkeeperID'] ?>" title="Edit shopkeeper details"><i class="icon-edit"></i></a>
-                                                        <a href="manage-shopkeepers.php?shopkeeperID=<?php echo $row['shopkeeperID'] ?>&del=delete" onClick="return confirm('Are you sure you want to delete?')"><i class="icon-trash"></i></a>
+                                                        <a href="manage-shopkeepers.php?shopkeeperID=<?php echo $row['shopkeeperID'] ?>&del=delete" onClick="return confirm('All the details related to this shopkeeper will be deleted. Are you sure you want to continue?')"><i class="icon-trash"></i></a>
                                                     </td>
                                                     </td>
                                                 </tr>

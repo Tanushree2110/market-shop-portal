@@ -19,7 +19,7 @@ if (strlen($_SESSION['email']) == 0) {
         $remark=addslashes($remark);
         $contact = $_POST['contact'];
         $contact= addslashes($contact);
-        $sql = mysqli_query($con, "insert into shop values('$shopID','$location','$licVal','$licExt','$contact','$shopName','$remark')");
+        $sql = mysqli_query($con, "insert into shop values('$shopID','$location','$licVal','$licExt','$contact','$shopName','$remark', DEFAULT)");
         if (mysqli_errno($con) == 1062) {
             $_SESSION['msg'] = 'Failed to add shop. Possible error: Duplicate shop Id';
         } else {
@@ -27,7 +27,7 @@ if (strlen($_SESSION['email']) == 0) {
         }
     }
     if (isset($_GET['del'])) {
-        mysqli_query($con, "delete from shop where shopID = '" . $_GET['shopID'] . "'");
+        mysqli_query($con, "delete from shop where shopID= '" . $_GET['shopID'] . "'")or die('error');
         $_SESSION['delmsg'] = "Shop removed!";
     }
 ?>
@@ -207,7 +207,7 @@ if (strlen($_SESSION['email']) == 0) {
                                                     <td><?php echo htmlentities($row['remark']); ?></td>
                                                     <td>
                                                         <a href="edit-shop-details.php?shopID=<?php echo $row['shopID'] ?>" title="Edit shop details"><i class="icon-edit"></i></a>&emsp;
-                                                        <a href="manage-shop.php?shopID=<?php echo $row['shopID'] ?>&del=delete" onClick="return confirm('Are you sure you want to delete?')"><i class="icon-trash"></i></a>
+                                                        <a href="manage-shop.php?shopID=<?php echo $row['shopID'] ?>&del=delete" onClick="return confirm('All the details related to the shop will be deleted. Are you sure you want to continue?')"><i class="icon-trash"></i></a>
                                                     </td>
                                                     </td>
                                                 </tr>
